@@ -103,7 +103,7 @@ char pseudorandomMenuOption()
 }
 
 //Precondition:
-//Postcondition:
+//Postcondition: g
 void generateIndirectNumTable(Pseudorandom& pseudorandom1)
 {
     srand(time(0));
