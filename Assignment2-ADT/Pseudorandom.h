@@ -1,4 +1,6 @@
 #pragma once
+#include <vector>
+
 class Pseudorandom
 {
 private:
@@ -19,6 +21,8 @@ public:
     void setModulus(int newModulus);
     void generateSeed();
     double generateNextIndirectNum();
-
+    //double generateGaussian(const vector<int> gaussian);
+    void displayGenerateGaussian();
+    ~Pseudorandom() {};
 };
 
