@@ -25,29 +25,14 @@ void calculateGaussianDistribution(double* doubleArray, int size);
 //Postcondition: Returns to the main menu once done.
 int main()
 {
-    /*do
-    {
-        switch (menuOption())
-        {
-        case 0: exit(1); break;
-        case 1: quadraticExpressionMenu(); break;
-        case 2: pseudorandomMenu(); break;
-        case 3: rationalNumMenu(); break;
-        default: cout << "\t\tERROR - Invalid option. Please re-enter."; break;
-        }
-        cout << "\n";
-        system("pause");
-    } while (true);
-
-    return EXIT_SUCCESS;*/
-
+ 
     pseudorandomMenu();
 
 }
 
 
-//Precondition:
-//Postcondition:
+//Precondition: None
+//Postcondition: None
 void pseudorandomMenu()
 {
     Pseudorandom pseudorand1;
@@ -101,8 +86,8 @@ char pseudorandomMenuOption()
     return option;
 }
 
-//Precondition:
-//Postcondition:
+//Precondition: None 
+//Postcondition: None
 void generateIndirectNumTable(Pseudorandom& pseudorandom1)
 {
     unsigned seed = pseudorandom1.getMultiplier();
@@ -113,11 +98,6 @@ void generateIndirectNumTable(Pseudorandom& pseudorandom1)
     double* doubleArray = nullptr;
     int size = 1000000;
     doubleArray = arrayAllocator(size);
-    
-    //Randomize Multiplier, Increment, and Modulus
-    /*pseudorandom1.setMultiplier(rand());
-    pseudorandom1.setIncrement(rand());
-    pseudorandom1.setModulus(rand());*/
 
     pseudorandom1.setMultiplier(16246);
     pseudorandom1.setIncrement(6965);
@@ -189,8 +169,8 @@ void generateIndirectNumTable(Pseudorandom& pseudorandom1)
     delete doubleArray;
 }
 
-//Precondition: Integer 
-//Postcondition: Returns a double array
+//Precondition: A positive or Negative Integer 
+//Postcondition: Returns a double Array
 double* arrayAllocator(int size)
 {
     double* newArray = nullptr;
@@ -200,8 +180,8 @@ double* arrayAllocator(int size)
         return new double[size];
 }
 
-//Precondition: Reads a valid double array and integer
-//Postcondition: Returns a double from the calculation of the average
+//Precondition: Reads Double array and integer
+//Postcondition: Returns a double 
 double arrayAverage(double* doubleArray, int size)
 {
     if (size == 0)
@@ -219,8 +199,8 @@ double arrayAverage(double* doubleArray, int size)
     return sum / size;
 }
 
-//Precondition: Reads a valid double array, an integer and a double
-//Postcondition: Returns a double from the calculation of Standard Deviation
+//Precondition: Reads a double array, an integer and a double
+//Postcondition: Returns a double 
 double arrayStandardDeviation(double* doubleArray, int size, double mean)
 {
 
@@ -241,7 +221,7 @@ double arrayStandardDeviation(double* doubleArray, int size, double mean)
 }
 
 //Precondition: double array and integer
-//Postcondition: none.
+//Postcondition: none
 void calculateGaussianDistribution(double* doubleArray, int size)
 {
     double mean = arrayAverage(doubleArray, size);
