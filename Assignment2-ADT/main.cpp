@@ -9,6 +9,7 @@
 #include "input.h"
 #include "Rational.h"
 #include "Pseudorandom.h"
+std::isnormal)
 
 using namespace std;
 void pseudorandomMenu();
@@ -27,8 +28,9 @@ int main()
     pseudorandomMenu();
 }
 
+
 //Precondition: None
-//Postcondition:
+//Postcondition: None
 void pseudorandomMenu()
 {
     Pseudorandom pseudorand1;
@@ -82,8 +84,8 @@ char pseudorandomMenuOption()
     return option;
 }
 
-//Precondition:
-//Postcondition:
+//Precondition: None 
+//Postcondition: None
 void generateIndirectNumTable(Pseudorandom& pseudorandom1)
 {
     unsigned seed = pseudorandom1.getMultiplier();
@@ -164,8 +166,8 @@ void generateIndirectNumTable(Pseudorandom& pseudorandom1)
     delete doubleArray;
 }
 
-//Precondition: Integer 
-//Postcondition: Returns a double array
+//Precondition: A positive or Negative Integer 
+//Postcondition: Returns a double Array
 double* arrayAllocator(int size)
 {
     double* newArray = nullptr;
@@ -216,8 +218,8 @@ double arrayAverage(double* doubleArray, int size)
     return sum / size;
 }
 
-//Precondition: Reads a valid double array, an integer and a double
-//Postcondition: Returns a double from the calculation of Standard Deviation
+//Precondition: Reads a double array, an integer and a double
+//Postcondition: Returns a double 
 double arrayStandardDeviation(double* doubleArray, int size, double mean)
 {
 
@@ -238,7 +240,7 @@ double arrayStandardDeviation(double* doubleArray, int size, double mean)
 }
 
 //Precondition: double array and integer
-//Postcondition: none.
+//Postcondition: none
 void calculateGaussianDistribution(double* doubleArray, int size)
 {
     double median = arrayMedian(doubleArray, size);
