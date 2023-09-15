@@ -11,11 +11,7 @@
 #include "Pseudorandom.h"
 
 
-
 using namespace std;
-int menuOption();
-void quadraticExpressionMenu();
-char quadraticExpressionMenuOption();
 void pseudorandomMenu();
 char pseudorandomMenuOption();
 void generateIndirectNumTable(Pseudorandom&);
@@ -23,13 +19,13 @@ double* arrayAllocator(int size);
 double arrayAverage(double* doubleArray, int size);
 double arrayStandardDeviation(double* doubleArray, int size, double mean);
 void calculateGaussianDistribution(double* doubleArray, int size);
-void rationalNumMenu();
-char rationalNumMenuOption();
 
 
+//Precondition: None
+//Postcondition: Returns to the main menu once done.
 int main()
 {
-    do
+    /*do
     {
         switch (menuOption())
         {
@@ -43,58 +39,15 @@ int main()
         system("pause");
     } while (true);
 
-    return EXIT_SUCCESS;
+    return EXIT_SUCCESS;*/
+
+    pseudorandomMenu();
+
 }
 
-int menuOption()
-{
-    system("cls");
-    cout << "CMPR131 Chapter 2: ADT's by Saul Merino" << endl;
-    cout << string(100, char(205)) << endl;
 
-    cout << "1. Quadratic Expression" << endl;
-    cout << string(100, char(196)) << endl;
-
-    cout << "2. Pseudorandom" << endl;
-    cout << string(100, char(196)) << endl;
-
-    cout << "3. Rational Number" << endl;
-    cout << string(100, char(196)) << endl;
-
-    cout << "0. Quit" << endl;
-    cout << string(100, char(205)) << endl;
-    int option = inputInteger("Option : ", 0, 3);
-    return option;
-}
-
-void quadraticExpressionMenu()
-{
-    /*string textString;
-    string convertedNumString;
-    do
-    {
-        switch (quadraticExpressionMenuOption())
-        {
-        case 0: return; break;
-        case 1: textString = newStringInput(); break;
-        case 2: convertedNumString = textToNumConvert(textString); break;
-        case 3: numStringWrite(convertedNumString); break;
-        case 4: numStringRead(convertedNumString); break;
-        case 5: convertedNumString = textToNumConvert(textString); break;
-        case 6: numStringWrite(convertedNumString); break;
-        case 7: numStringRead(convertedNumString); break;
-        default: cout << "\t\tERROR - Invalid option. Please re-enter."; break;
-        }
-        cout << "\n";
-        system("pause");
-    } while (true);*/
-}
-
-char quadraticExpressionMenuOption()
-{
-    return '0';
-}
-
+//Precondition:
+//Postcondition:
 void pseudorandomMenu()
 {
     Pseudorandom pseudorand1;
@@ -122,6 +75,8 @@ void pseudorandomMenu()
     } while (true);
 }
 
+//Precondition: None
+//Postcondition: Returns a character
 char pseudorandomMenuOption()
 {
     system("cls");
@@ -146,6 +101,8 @@ char pseudorandomMenuOption()
     return option;
 }
 
+//Precondition:
+//Postcondition:
 void generateIndirectNumTable(Pseudorandom& pseudorandom1)
 {
     unsigned seed = pseudorandom1.getMultiplier();
@@ -232,6 +189,8 @@ void generateIndirectNumTable(Pseudorandom& pseudorandom1)
     delete doubleArray;
 }
 
+//Precondition: Integer 
+//Postcondition: Returns a double array
 double* arrayAllocator(int size)
 {
     double* newArray = nullptr;
@@ -241,6 +200,8 @@ double* arrayAllocator(int size)
         return new double[size];
 }
 
+//Precondition: Reads a valid double array and integer
+//Postcondition: Returns a double from the calculation of the average
 double arrayAverage(double* doubleArray, int size)
 {
     if (size == 0)
@@ -258,6 +219,8 @@ double arrayAverage(double* doubleArray, int size)
     return sum / size;
 }
 
+//Precondition: Reads a valid double array, an integer and a double
+//Postcondition: Returns a double from the calculation of Standard Deviation
 double arrayStandardDeviation(double* doubleArray, int size, double mean)
 {
 
@@ -277,6 +240,8 @@ double arrayStandardDeviation(double* doubleArray, int size, double mean)
     return sqrt(sumOfSquares / size);
 }
 
+//Precondition: double array and integer
+//Postcondition: none.
 void calculateGaussianDistribution(double* doubleArray, int size)
 {
     double mean = arrayAverage(doubleArray, size);
@@ -286,38 +251,5 @@ void calculateGaussianDistribution(double* doubleArray, int size)
     
 }
 
-void rationalNumMenu()
-{
-    /*Rational rational1;
-    do
-    {
-        switch (rationalNumMenuOption())
-        {
-        case '0': return; break;
-        case 'A': rational1.setNumerator(); break;
-        case 'B': rational1.getNumerator(); break;
-        case 'C': rational1.setDenominator(); break;
-        case 'D': rational1.getDenominator(); break;
-        case 'E': convertedNumString = textToNumConvert(textString); break;
-        case 'F': numStringWrite(convertedNumString); break;
-        case 'G': numStringRead(convertedNumString); break;
-        case 'H': convertedNumString = textToNumConvert(textString); break;
-        case 'I': cout << "R1 (" << rational1.getNumerator() << ") == R2 (" << rational1.getDenominator()"): " break;
-        case 'J': numStringRead(convertedNumString); break;
-        default: cout << "\t\tERROR - Invalid option. Please re-enter."; break;
-        }
-        cout << "\n";
-        system("pause");
-    } while (true);*/
-}
 
-char rationalNumMenuOption()
-{
-    return 'A';
-}
-
-bool numeratorGreaterThanDenominator(Rational)
-{
-    return true;
-}
 
