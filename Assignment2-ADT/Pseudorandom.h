@@ -21,8 +21,6 @@ public:
     void setModulus(int newModulus);
     void generateSeed();
     double generateNextIndirectNum();
-    //double generateGaussian(const vector<int> gaussian);
-    void displayGenerateGaussian();
     ~Pseudorandom() {};
 };
 

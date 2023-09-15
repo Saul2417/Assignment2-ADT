@@ -10,43 +10,24 @@
 #include "Rational.h"
 #include "Pseudorandom.h"
 
-
 using namespace std;
 void pseudorandomMenu();
 char pseudorandomMenuOption();
 void generateIndirectNumTable(Pseudorandom&);
 double* arrayAllocator(int size);
+double arrayMedian(double* doubleArray, int size);
 double arrayAverage(double* doubleArray, int size);
 double arrayStandardDeviation(double* doubleArray, int size, double mean);
 void calculateGaussianDistribution(double* doubleArray, int size);
-
 
 //Precondition: None 
 //Postcondition: Returns to the main menu once done.
 int main()
 {
-    /*do
-    {
-        switch (menuOption())
-        {
-        case 0: exit(1); break;
-        case 1: quadraticExpressionMenu(); break;
-        case 2: pseudorandomMenu(); break;
-        case 3: rationalNumMenu(); break;
-        default: cout << "\t\tERROR - Invalid option. Please re-enter."; break;
-        }
-        cout << "\n";
-        system("pause");
-    } while (true);
-
-    return EXIT_SUCCESS;*/
-
     pseudorandomMenu();
-
 }
 
-
-//Precondition:
+//Precondition: None
 //Postcondition:
 void pseudorandomMenu()
 {
@@ -115,13 +96,9 @@ void generateIndirectNumTable(Pseudorandom& pseudorandom1)
     doubleArray = arrayAllocator(size);
     
     //Randomize Multiplier, Increment, and Modulus
-    /*pseudorandom1.setMultiplier(rand());
+    pseudorandom1.setMultiplier(rand());
     pseudorandom1.setIncrement(rand());
-    pseudorandom1.setModulus(rand());*/
-
-    pseudorandom1.setMultiplier(16246);
-    pseudorandom1.setIncrement(6965);
-    pseudorandom1.setModulus(22896);
+    pseudorandom1.setModulus(rand());
 
     cout << "Multiplier = " << pseudorandom1.getMultiplier() << ", Increment = " << pseudorandom1.getIncrement() << ", Modulus = " << pseudorandom1.getModulus() << endl;
 
@@ -184,8 +161,6 @@ void generateIndirectNumTable(Pseudorandom& pseudorandom1)
     cout << "[0.7 ... 0.8)" << setw(10) << count7 << endl;
     cout << "[0.8 ... 0.9)" << setw(10) << count8 << endl;
     cout << "[0.9 ... 1.0)" << setw(10) << count9 << endl << endl;
-
-    calculateGaussianDistribution(doubleArray, size);
     delete doubleArray;
 }
 
@@ -198,6 +173,28 @@ double* arrayAllocator(int size)
         return nullptr;
     else
         return new double[size];
+}
+
+double arrayMedian(double* doubleArray, int size)
+{
+    double median = 0.0;
+
+    if (size == 0)
+    {
+        cout << "Array is empty. Select 1 to create an array.";
+        return 0;
+    }
+
+    if (size % 2 == 0)
+    {
+        median = (doubleArray[size / 2 - 1] + doubleArray[size / 2]) / 2.0;
+    }
+    else
+    {
+        median = doubleArray[size / 2];
+    }
+
+    return median;
 }
 
 //Precondition: Reads a valid double array and integer
@@ -244,12 +241,9 @@ double arrayStandardDeviation(double* doubleArray, int size, double mean)
 //Postcondition: none.
 void calculateGaussianDistribution(double* doubleArray, int size)
 {
+    double median = arrayMedian(doubleArray, size);
     double mean = arrayAverage(doubleArray, size);
     double stdDeviation = arrayStandardDeviation(doubleArray, size, mean);
-    double gaussianDistribution = ((1.0 / (stdDeviation * sqrt(2.0 * M_PI))) * (pow(M_E, (0.5 * pow( (mean * -1.0) / stdDeviation, 2.0)))));
+    double gaussianDistribution = ((1.0 / (stdDeviation * sqrt(2.0 * M_PI))) * (pow(M_E, (0.5 * pow(median + (mean * -1.0) / stdDeviation, 2.0)))));
     cout << "With 10 uniformly distributed rand number in the range[0...1.0), the approximate Gaussian distribution is " << gaussianDistribution;
-    
 }
-
-
-
