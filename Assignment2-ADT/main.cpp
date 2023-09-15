@@ -9,6 +9,7 @@
 #include "input.h"
 #include "Rational.h"
 #include "Pseudorandom.h"
+std::isnormal)
 
 
 using namespace std;
