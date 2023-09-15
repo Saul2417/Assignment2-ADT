@@ -39,16 +39,10 @@ int main()
         cout << "\n";
         system("pause");
     } while (true);
-
     return EXIT_SUCCESS;*/
-
     pseudorandomMenu();
-
 }
 
-
-//Precondition:
-//Postcondition:
 void pseudorandomMenu()
 {
     Pseudorandom pseudorand1;
@@ -103,7 +97,7 @@ char pseudorandomMenuOption()
 }
 
 //Precondition:
-//Postcondition: g
+//Postcondition:
 void generateIndirectNumTable(Pseudorandom& pseudorandom1)
 {
     srand(time(0));
@@ -244,5 +238,5 @@ void calculateGaussianDistribution(double* doubleArray, int size)
     double stdDeviation = arrayStandardDeviation(doubleArray, size, mean);
     double gaussianDistribution = ((1.0 / (stdDeviation * sqrt(2.0 * M_PI))) * (pow(M_E, (0.5 * pow((mean * -1.0) / stdDeviation, 2.0)))));
     cout << "With 10 uniformly distributed rand number in the range[0...1.0), the approximate Gaussian distribution is " << gaussianDistribution;
-
+    
 }
