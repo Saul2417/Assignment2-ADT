@@ -6,7 +6,6 @@
 #include <string>
 #include <vector>
 #include <cmath>
-#include <time.h>
 #include "input.h"
 #include "Rational.h"
 #include "Pseudorandom.h"
@@ -39,10 +38,16 @@ int main()
         cout << "\n";
         system("pause");
     } while (true);
+
     return EXIT_SUCCESS;*/
+
     pseudorandomMenu();
+
 }
 
+
+//Precondition:
+//Postcondition:
 void pseudorandomMenu()
 {
     Pseudorandom pseudorand1;
@@ -77,17 +82,17 @@ char pseudorandomMenuOption()
     system("cls");
     cout << "2: Pseudorandom" << endl;
     cout << string(100, char(205)) << endl;
-    cout << "A. Get Seed" << endl;
-    cout << "B. Set Seed" << endl;
-    cout << "C. Get Multiplier" << endl;
-    cout << "D. Set Multiplier" << endl;
-    cout << "E. Get Modulus" << endl;
-    cout << "F. Set Modulus" << endl;
-    cout << "G. Get Increment" << endl;
-    cout << "H. Set Increment" << endl;
-    cout << "I. Get Next Number" << endl;
-    cout << "J. Get Next Indirect Number" << endl;
-    cout << "K. Run Experiment With Different Numbers (Mutliplier, Increment, and Modulus)" << endl;
+    cout << "A. Get Seed" << endl;  
+    cout << "B. Set Seed"  << endl;                           
+    cout << "C. Get Multiplier"  << endl;                           
+    cout << "D. Set Multiplier" << endl;                              
+    cout << "E. Get Modulus"  << endl;                             
+    cout << "F. Set Modulus"  << endl;                               
+    cout << "G. Get Increment" << endl;                                
+    cout << "H. Set Increment" << endl;                             
+    cout << "I. Get Next Number" << endl;                         
+    cout << "J. Get Next Indirect Number" << endl;                             
+    cout << "K. Run Experiment With Different Numbers (Mutliplier, Increment, and Modulus)" << endl;                
     cout << string(100, char(205)) << endl;
     cout << "0. Return" << endl;
     cout << string(100, char(205)) << endl;
@@ -100,18 +105,23 @@ char pseudorandomMenuOption()
 //Postcondition:
 void generateIndirectNumTable(Pseudorandom& pseudorandom1)
 {
-    srand(time(0));
+    unsigned seed = pseudorandom1.getMultiplier();
+    srand(seed);
 
     int count0 = 0, count1 = 0, count2 = 0, count3 = 0, count4 = 0, count5 = 0, count6 = 0, count7 = 0, count8 = 0, count9 = 0;
 
     double* doubleArray = nullptr;
     int size = 1000000;
     doubleArray = arrayAllocator(size);
-
+    
     //Randomize Multiplier, Increment, and Modulus
-    pseudorandom1.setMultiplier(rand());
+    /*pseudorandom1.setMultiplier(rand());
     pseudorandom1.setIncrement(rand());
-    pseudorandom1.setModulus(rand());
+    pseudorandom1.setModulus(rand());*/
+
+    pseudorandom1.setMultiplier(16246);
+    pseudorandom1.setIncrement(6965);
+    pseudorandom1.setModulus(22896);
 
     cout << "Multiplier = " << pseudorandom1.getMultiplier() << ", Increment = " << pseudorandom1.getIncrement() << ", Modulus = " << pseudorandom1.getModulus() << endl;
 
@@ -236,7 +246,10 @@ void calculateGaussianDistribution(double* doubleArray, int size)
 {
     double mean = arrayAverage(doubleArray, size);
     double stdDeviation = arrayStandardDeviation(doubleArray, size, mean);
-    double gaussianDistribution = ((1.0 / (stdDeviation * sqrt(2.0 * M_PI))) * (pow(M_E, (0.5 * pow((mean * -1.0) / stdDeviation, 2.0)))));
+    double gaussianDistribution = ((1.0 / (stdDeviation * sqrt(2.0 * M_PI))) * (pow(M_E, (0.5 * pow( (mean * -1.0) / stdDeviation, 2.0)))));
     cout << "With 10 uniformly distributed rand number in the range[0...1.0), the approximate Gaussian distribution is " << gaussianDistribution;
     
 }
+
+
+
