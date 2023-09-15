@@ -21,7 +21,7 @@ double arrayStandardDeviation(double* doubleArray, int size, double mean);
 void calculateGaussianDistribution(double* doubleArray, int size);
 
 
-//Precondition: None
+//Precondition: None 
 //Postcondition: Returns to the main menu once done.
 int main()
 {
